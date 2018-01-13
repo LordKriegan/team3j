@@ -7,6 +7,9 @@ var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 var app = express();
 
+//force https
+app.use(sslRedirect());
+
 //setup handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
