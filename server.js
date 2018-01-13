@@ -13,7 +13,12 @@ app.set("view engine", "handlebars");
 
 //setup routes
 app.use(express.static("public"));
-require('./routes/routes.js')(app);
+require('./routes/page_routes.js')(app);
+require('./routes/api_routes.js')(app);
 
+//catch all route
+app.get("*", function(req, res) {
+    res.render("home");
+});
 //start server
 app.listen(port);

@@ -15,8 +15,10 @@
   "author": "Qamar A. Stationwala",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.17.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "twitter": "^1.7.1"
   }
 }

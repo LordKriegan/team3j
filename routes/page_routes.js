@@ -16,9 +16,5 @@ module.exports = function(app) {
 
     app.get("/smfeeds", function(req, res) {
         res.render("smfeeds");
-    })
-
-    app.get("*", function(req, res) {
-        res.render("home");
-    })
+    });
 }
