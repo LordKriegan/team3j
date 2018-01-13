@@ -58,9 +58,9 @@ window.onload = function () {
                 lng: position.coords.longitude
             };
             calculateAndDisplayRoute(directionsService, directionsDisplay, pos);
-        }, function () {
+        }, function (err) {
             backupDirs();
-            console.error("Uh-oh! Something went wrong when we tried to get your location.");
+            console.error("Uh-oh! Something went wrong when we tried to get your location.", err);
         });
         } else {
             backupDirs();
