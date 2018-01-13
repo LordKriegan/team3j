@@ -2,6 +2,7 @@
 if (process.env.NODE_ENV.trim() === "development") require('dotenv').config(); //grab local copy of env vars
 var express = require('express');
 var exphbs = require('express-handlebars');
+var sslRedirect = require('heroku-ssl-redirect');
 
 //setup server
 var port = process.env.PORT || 3000;
