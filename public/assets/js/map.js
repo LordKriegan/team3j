@@ -41,8 +41,7 @@ window.onload = function () {
                 lng: position.coords.longitude
             };
             calculateAndDisplayRoute(directionsService, directionsDisplay, pos);
-            //not triggering the .attr() here..?
-            $("#getDirs").attr("display", "none");
+            $("#getDirs").css("display", "none");
         }, function () {
             alert("Uh-oh! Something went wrong when we tried to get your location.")
             console.error("Uh-oh! Something went wrong when we tried to get your location.");
