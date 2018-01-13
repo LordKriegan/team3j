@@ -1,0 +1,24 @@
+.contentBox {
+	border-style: none groove groove none;
+	border-width: 5px;
+	border-radius: 25px;
+	border-color: grey;
+	padding: 15px;
+}
+
+.contactLinks {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	vertical-align: middle;
+}
+
+.contactLinkImg {
+	border-radius: 50%;
+	margin: 2px;
+}
+
+.contactLinkImg:hover {
+	box-shadow: 0 0 3pt 2pt grey;
+}
