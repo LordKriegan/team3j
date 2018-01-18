@@ -9,17 +9,17 @@ module.exports = function (app) {
             res.set("WWW-Authenticate", "Basic realm=\"Authorization Required\"");
             // If the user cancels the dialog, or enters the password wrong too many times,
             // show the Access Restricted error message.
-            return res.status(401).send("Authorization Required");
+            res.status(401).send("Authorization Required");
         } else {
             // If the user enters a username and password, the browser re-requests the route
             // and includes a Base64 string of those credentials.
             var credentials = new Buffer(auth.split(" ").pop(), "base64").toString("ascii").split(":");
             if (credentials[0] === process.env.ADMINUN && credentials[1] === process.env.ADMINPW) {
                 // The username and password are correct, so the user is authorized.
-                return res.render("home", { layout: 'admin.handlebars'});
+                res.render("adm_buylist", { layout: 'admin.handlebars' });
             } else {
                 // The user typed in the username or password wrong.
-                return res.status(403).send("Access Denied (incorrect credentials)");
+                res.status(403).send("Access Denied (incorrect credentials)");
             }
         }
     });

@@ -35,7 +35,7 @@ require('./routes/admin_routes.js')(app);
 
 //catch all route
 app.get("*", function(req, res) {
-    res.render("home");
+    res.render("err404");
 });
 
 //start server

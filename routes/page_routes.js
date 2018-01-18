@@ -17,4 +17,8 @@ module.exports = function(app) {
     app.get("/smfeeds", function(req, res) {
         res.render("smfeeds");
     });
+
+    app.get("/buylist", function(req, res) {
+        res.render("buylist");
+    })
 }
