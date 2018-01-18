@@ -4,7 +4,6 @@ window.onload = function () {
         .get("/api/getbuylist")
         .then(function (response) {
             buylist = response.data
-            console.log(buylist);
             for (var i = 0; i < buylist.deptList.length; i++) {
                 //create tabs
                 var newTab = $("<li role='presentation'></li>");
@@ -26,7 +25,6 @@ window.onload = function () {
             }
 
             //setting up default views and vars
-            totalDepts = buylist.deptList.length;
             currDept = buylist.deptList[0].id;
             $($("#deptTabs").children()[0]).addClass("active");
             $($("#itemLists").children()[0]).css("display", "table");

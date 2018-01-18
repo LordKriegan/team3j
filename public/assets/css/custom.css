@@ -33,3 +33,16 @@
 .deptTable {
 	display: none;
 }
+
+.newsDate {
+	font-weight: lighter;
+	font-style: italic;
+}
+
+.newsContainer {
+	border-style: none groove groove none;
+	border-width: 5px;
+	border-radius: 25px;
+	border-color: grey;
+	padding: 15px;
+}

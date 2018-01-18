@@ -58,7 +58,14 @@ module.exports = function(app) {
         });
     });
     
-
+    app.get("/api/news", function(req, res) {
+        db.News.findAll({
+            where: {},
+            attributes: ["id", "news", "createdAt"]
+        }).then(function(response) {
+            res.json(response);
+        });
+    }) 
 
     app.get("/api/twitter", function(req, res) {
         var params = { screen_name: "team3j", count: 20 };
