@@ -32,11 +32,32 @@ module.exports = function(app) {
         db.Items.create({
             itemName: req.body.itemName,
             itemPrice: req.body.itemPrice,
-            DeptId: req.body.deptid
+            DeptId: req.body.DeptId
         }).then(function(dbData) {
             res.json(dbData);
         });
     });
+    app.put("/api/buylist/Item", function(req, res) {
+        db.Items.update({
+            itemPrice: req.body.itemPrice
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function(dbData) {
+            res.json(dbData);
+        })
+    })
+    app.delete("/api/buylist/Item/:id", function(req, res) {
+        db.Items.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbData) {
+            res.json(dbData);
+        });
+    });
+    
 
 
     app.get("/api/twitter", function(req, res) {
@@ -57,7 +78,7 @@ module.exports = function(app) {
         }).then(function(deptData) {
             response.deptList = deptData;
             db.Items.findAll({
-                attributes: ["itemName", "itemPrice", "DeptId"],
+                attributes: ["id", "itemName", "itemPrice", "DeptId"],
                 where: {}
             }).then(function(itemData) {
                 response.itemList = itemData;
