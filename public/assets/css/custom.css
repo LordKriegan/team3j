@@ -22,3 +22,14 @@
 .contactLinkImg:hover {
 	box-shadow: 0 0 3pt 2pt grey;
 }
+
+#map {
+	width: 100%;
+	height: 400px;
+	background-color: grey;
+	border-radius: 25px;
+}
+
+.deptTable {
+	display: none;
+}

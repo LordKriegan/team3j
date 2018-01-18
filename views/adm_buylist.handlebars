@@ -1,0 +1,36 @@
+<h1 class="text-center">Buylist</h1>
+<ul id="deptTabs" class="nav nav-tabs"></ul>
+<div id="itemLists"></div>
+<div class="row">
+    <div class="col-xs-6">
+        <form role="form">
+            <div class="form-group">
+                <label for="newDept">Department Name: </label>
+                <input class="form-control" id="newDept" type="text">
+            </div>
+            <button class="btn btn-primary" id="addDept" type="submit">Add Department</button>
+            <button class="btn btn-primary" id="remDept" type="submit">Remove Department</button>
+        </form>
+    </div>
+    <div class="col-xs-6">
+        <form role="form">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="newItem">Card Name: </label>
+                        <input class="form-control" id="newItem" type="text">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="newItemPrice">Card Price: </label>
+                        <input class="form-control" id="newItemPrice" type="number" min="0.01">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="addItem" type="submit">Add Item</button>
+        </form>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+<script src="/assets/js/admin/buylist.js"></script>

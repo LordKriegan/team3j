@@ -21,22 +21,18 @@ function grabInstaFeed() {
 
 window.onload = function() {
     grabFBFeed();
+
+    $("#feedTabs > li").on("click", function () {
+        $("#feedTabs > li").removeClass("active");
+        $(this).addClass("active");
+    });
     $("#fbFeed").on("click", function() {
-        $("#fbFeed").addClass("active");
-        $("#twitFeed").removeClass("active");
-        $("#instaFeed").removeClass("active");
         grabFBFeed();
     });
     $("#twitFeed").on("click", function() {
-        $("#fbFeed").removeClass("active");
-        $("#twitFeed").addClass("active");
-        $("#instaFeed").removeClass("active");
         grabTweets();
     });
     $("#instaFeed").on("click", function() {
-        $("#fbFeed").removeClass("active");
-        $("#twitFeed").removeClass("active");
-        $("#instaFeed").addClass("active");
         grabInstaFeed();
     });
 }
