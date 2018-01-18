@@ -1,5 +1,7 @@
 //dependencies
-if (process.env.NODE_ENV.trim() === "development") require('dotenv').config(); //grab local copy of env vars
+if (process.env.NODEENV.trim() === "development"){
+     require('dotenv').config(); //grab local copy of env vars
+}
 var express = require('express');
 var exphbs = require('express-handlebars');
 var sslRedirect = require('heroku-ssl-redirect');
@@ -29,6 +31,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 require('./routes/page_routes.js')(app);
 require('./routes/api_routes.js')(app);
+require('./routes/admin_routes.js')(app);
 
 //catch all route
 app.get("*", function(req, res) {
@@ -37,7 +40,7 @@ app.get("*", function(req, res) {
 
 //start server
 db.sequelize.sync({ force: true }).then(function() {
-    app.listen(PORT, function() {
-        console.log("App listening on PORT " + PORT);
+    app.listen(port, function() {
+        console.log("App listening on PORT " + port);
     });
 });

@@ -9,6 +9,8 @@ var twitKey = {
 }
 var twitClient = new Twitter(twitKey)
 
+var db = require("../models");
+
 module.exports = function(app) {
     app.get("/api/twitter", function(req, res) {
         var params = { screen_name: "team3j", count: 20 };
@@ -18,6 +20,21 @@ module.exports = function(app) {
             } else {
                 res.json(tweets);
             }
+        });
+    });
+    app.get("/api/getbuylist", function(req, res) {
+        var response = {};
+        db.Depts.findAll({
+            where: {}
+        }).then(function(deptData) {
+            response.deptList = deptData;
+            db.Items.findAll({
+                include: [db.Depts],
+                where: {}
+            }).then(function(itemData) {
+                response.itemList = itemData;
+                res.json(response);
+            });
         });
     });
 }
