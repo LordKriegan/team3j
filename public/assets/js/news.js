@@ -12,7 +12,7 @@ window.onload = function() {
                 $(newP).addClass("newsDate");
                 $(newDiv).append(newP);
                 newP = $("<p>");
-                $(newP).text(response.data[i].news);
+                $(newP).html(response.data[i].news);
                 $(newP).addClass("newsText");
                 $(newDiv).append(newP);
                 $(newDiv).addClass("newsContainer");

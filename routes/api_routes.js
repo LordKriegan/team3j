@@ -65,7 +65,25 @@ module.exports = function(app) {
         }).then(function(response) {
             res.json(response);
         });
-    }) 
+    });
+    
+    app.post("/api/news", function(req, res) {
+        db.News.create({
+            news: req.body.news
+        }).then(function(dbData) {
+            res.json(dbData);
+        });
+    });
+
+    app.delete("/api/news/:id", function(req, res) {
+        db.News.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbData) {
+            res.json(dbData);
+        });
+    })
 
     app.get("/api/twitter", function(req, res) {
         var params = { screen_name: "team3j", count: 20 };
