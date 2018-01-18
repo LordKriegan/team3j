@@ -1,5 +1,5 @@
 //dependencies
-if (process.env.NODEENV.trim() === "development"){
+if (process.env.NODE_ENV.trim() === "development"){
      require('dotenv').config(); //grab local copy of env vars
 }
 var express = require('express');
