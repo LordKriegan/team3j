@@ -84,7 +84,18 @@ module.exports = function(app) {
             res.json(dbData);
         });
     })
-
+    app.get("/api/facebook", function(req, res) {
+        var queryURL = "https://graph.facebook.com/v2.11/113523372015699/feed?access_token=" + process.env.FBCLIENTID + "|" + process.env.FBCLIENTSECRET
+        axios
+            .get(queryURL)
+            .then(function(response) {
+                
+                res.json(response.data);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    })
     app.get("/api/twitter", function(req, res) {
         var params = { screen_name: "team3j", count: 20 };
         twitClient.get('statuses/user_timeline', params, function (error, tweets, response) {

@@ -1,11 +1,15 @@
 //dependencies
-if (process.env.NODE_ENV.trim() === "development"){
-     require('dotenv').config(); //grab local copy of env vars
-}
 var express = require('express');
 var exphbs = require('express-handlebars');
 var sslRedirect = require('heroku-ssl-redirect');
 var bodyParser = require('body-parser');
+
+//setup dev environment
+var dbSyncOptions = { force: false }
+if (process.env.NODE_ENV.trim() === "development"){
+    require('dotenv').config(); //grab local copy of env vars
+    dbSyncOptions.force = true;
+}
 
 //setup server
 var port = process.env.PORT || 3000;
@@ -33,13 +37,18 @@ require('./routes/page_routes.js')(app);
 require('./routes/api_routes.js')(app);
 require('./routes/admin_routes.js')(app);
 
+
+app.get("/404", function(req, res) {
+    res.status(404).render("err404");
+});
+
 //catch all route
 app.get("*", function(req, res) {
-    res.render("err404");
+    res.redirect("/404");
 });
 
 //start server
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync(dbSyncOptions).then(function() {
     app.listen(port, function() {
         console.log("App listening on PORT " + port);
     });
