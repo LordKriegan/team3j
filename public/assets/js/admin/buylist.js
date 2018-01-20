@@ -25,9 +25,15 @@ window.onload = function () {
             }
 
             //setting up default views and vars
-            currDept = buylist.deptList[0].id;
-            $($("#deptTabs").children()[0]).addClass("active");
-            $($("#itemLists").children()[0]).css("display", "table");
+            currDept = sessionStorage.getItem("aDept") || buylist.deptList[0].id;
+            var deptTabs = $("#deptTabs").children();
+            for (var i = 0; i < deptTabs.length; i++) {
+                if ($(deptTabs[i]).attr("data-deptId") === String(currDept)) {
+                    $(deptTabs[i]).addClass("active");
+                    $("#deptTable" + currDept).css("display", "table");
+                    break;
+                }
+            }
 
             //need to put listeners here due to asynchronicity
             $("#deptTabs > li").on("click", function () {
@@ -43,6 +49,7 @@ window.onload = function () {
                     axios.delete("/api/buylist/Item/" + itemId)
                         .then(function (response) {
                             console.log(response);
+                            sessionStorage.setItem("aDept", currDept);
                             window.location.reload();
                         })
                         .catch(function (error) {
@@ -61,6 +68,7 @@ window.onload = function () {
                         id: itemId
                     }).then(function (response) {
                         console.log(response);
+                        sessionStorage.setItem("aDept", currDept);
                         window.location.reload();
                     }).catch(function (error) {
                         console.error(error);
@@ -78,6 +86,7 @@ window.onload = function () {
             name: $("#newDept").val().trim()
         }).then(function (response) {
             console.log(response);
+            sessionStorage.setItem("aDept", response.data.id)
             window.location.reload();
         }).catch(function (error) {
             console.error(error);
@@ -90,6 +99,7 @@ window.onload = function () {
             axios.delete("/api/buylist/Dept/" + currDept)
                 .then(function (response) {
                     console.log(response);
+                    sessionStorage.removeItem("aDept");
                     window.location.reload();
                 })
                 .catch(function (error) {
@@ -106,6 +116,7 @@ window.onload = function () {
             DeptId: currDept
         }).then(function (response) {
             console.log(response);
+            sessionStorage.setItem("aDept", currDept);
             window.location.reload();
         }).catch(function (error) {
             console.error(error);
