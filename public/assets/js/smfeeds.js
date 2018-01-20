@@ -4,7 +4,6 @@ function grabFBFeed() {
         .then(function(response) {
             $("#fbFeedBox").empty();
             var newUl = $("<ul class='list-group text-center'>");
-            console.log(response);
             for (var i = 0; i < response.data.data.length; i++) {
                 var newPost = response.data.data[i].message || response.data.data[i].story
                 newUl.append("<li class='list-group-item'>" + newPost + "</li>")
