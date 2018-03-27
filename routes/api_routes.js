@@ -89,7 +89,6 @@ module.exports = function(app) {
         axios
             .get(queryURL)
             .then(function(response) {
-                
                 res.json(response.data);
             })
             .catch(function(error) {
