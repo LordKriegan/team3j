@@ -77,3 +77,22 @@ textarea {
 .feedBox {
 	display: none;
 }
+
+.instagramPic {
+	width: 250px;
+	height: 250px;
+	display: inline-block;
+	margin: 25px;
+	/* border-style: groove;
+	border-radius: 10%;
+	border-width: 5px;
+	border-color: #FFFFFF */
+}
+
+#instaFeedBox {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	vertical-align: center;
+}
