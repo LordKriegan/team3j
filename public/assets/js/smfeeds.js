@@ -40,7 +40,7 @@ function grabInstaFeed() {
             $("#instaFeedBox").empty();
             var data = response.data.graphql.user.edge_owner_to_timeline_media.edges
             for (var i =0; i < data.length; i++) {
-                $("#instaFeedBox").append("<a target='_blank' href='https://www.instagram.com/p/" + data[i].node.shortcode + "'><img class='img-responsive instagramPic' src='" + data[i].node.display_url + "' /></a>");
+                $("#instaFeedBox").append("<a target='_blank' href='https://www.instagram.com/p/" + data[i].node.shortcode + "'><img class='img-responsive img-thumbnail instagramPic' src='" + data[i].node.display_url + "' /></a>");
             }
         })
         .catch(function(error) {

@@ -83,10 +83,10 @@ textarea {
 	height: 250px;
 	display: inline-block;
 	margin: 25px;
-	border-style: groove;
+	/* border-style: groove;
 	border-radius: 10%;
 	border-width: 5px;
-	border-color: #FFFFFF
+	border-color: #FFFFFF */
 }
 
 #instaFeedBox {
